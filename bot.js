@@ -1,6 +1,7 @@
 
 const { Client, Intents } = require('discord.js');
 const { date } = require('zod');
+const { token } = require('./config.json');
 const client = new Client({ intents: ["GUILDS", "GUILD_MESSAGES", "DIRECT_MESSAGES"] });
 
 function morseToText(input)
@@ -133,5 +134,5 @@ client.on('messageCreate', message => {
     }
 });
 
-client.login('OTI0MDc4MzQ1MzI1NTEwNjg3.YcZVBg.fNHpofbaUzk--2gIHtPjB5XP-rc');
+client.login(token);
 
