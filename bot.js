@@ -80,8 +80,10 @@ function morseToText(input)
             return '9';
         case "-----":
             return '0';
+	case "/":
+	    return ' ';
         default:
-            return ' ';
+            return '~';
     }
 }
 
@@ -102,7 +104,7 @@ client.once('ready', () =>
 
 
 client.on('messageCreate', message => {
-    console.log(message.content);
+    console.log(message.author.username, ": ", message.content);
     if(message.author.bot) return;
     const general = message.channel;
     if(message.content === "ping")
@@ -127,7 +129,7 @@ client.on('messageCreate', message => {
         {
             msgActual += morseToText(morseArr[i]);
         }
-        if(!(msgActual.substring(1).includes(' ')))
+        if(!(msgActual.substring(1).includes('~')))
         {
             message.reply(msgActual);
         }
