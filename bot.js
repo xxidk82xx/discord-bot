@@ -80,10 +80,10 @@ function morseToText(input)
             return '9';
         case "-----":
             return '0';
-	case "/":
-	    return ' ';
+	    case "/":
+	        return ' ';
         default:
-            return '~';
+            return '\U+E000';
     }
 }
 
@@ -129,7 +129,7 @@ client.on('messageCreate', message => {
         {
             msgActual += morseToText(morseArr[i]);
         }
-        if(!(msgActual.substring(1).includes('~')))
+        if(!(msgActual.substring(1).includes('\U+E000')))
         {
             message.reply(msgActual);
         }
