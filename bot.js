@@ -83,7 +83,7 @@ function morseToText(input)
 	    case "/":
 	        return ' ';
         default:
-            return input;
+            return '`';
     }
 }
 
@@ -122,14 +122,13 @@ client.on('messageCreate', message => {
     }
     else if(message.content.includes('-') || message.content.includes('.'))
     {
-
         let morseArr = message.content.split(' ')
         let msgActual = " ";
         for (i = 0; i < morseArr.length; i++)
         {
             msgActual += morseToText(morseArr[i]);
         }
-        message.reply(msgActual);
+        if(!(msgActual.substring(1).includes('`'))) message.reply(msgActual)
     }
 });
 
