@@ -83,7 +83,7 @@ function morseToText(input)
 	    case "/":
 	        return ' ';
         default:
-            return '\U+E000';
+            return input;
     }
 }
 
@@ -120,7 +120,7 @@ client.on('messageCreate', message => {
     {
         message.delete();
     }
-    else
+    else if(message.content.includes('-') || message.content.includes('.'))
     {
 
         let morseArr = message.content.split(' ')
@@ -129,10 +129,7 @@ client.on('messageCreate', message => {
         {
             msgActual += morseToText(morseArr[i]);
         }
-        if(!(msgActual.substring(1).includes('\U+E000')))
-        {
-            message.reply(msgActual);
-        }
+        message.reply(msgActual);
     }
 });
 
