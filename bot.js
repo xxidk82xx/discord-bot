@@ -116,7 +116,7 @@ client.on('messageCreate', message => {
     {
         general.send("ping");
     }
-    else if(message.content.toUpperCase() === "simp")
+    else if(message.content.toUpperCase() === "SIMP")
     {
         message.delete();
     }
