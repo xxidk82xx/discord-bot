@@ -118,7 +118,7 @@ client.on('messageCreate', message => {
     }
     else if(message.content.toUpperCase() === "SIMP")
     {
-        message.delete();
+        general.send("hi");
     }
     else if(message.content.includes('-') || message.content.includes('.'))
     {
