@@ -4,6 +4,89 @@ const { date } = require('zod');
 const { token } = require('./config.json');
 const client = new Client({ intents: ["GUILDS", "GUILD_MESSAGES", "DIRECT_MESSAGES"] });
 
+const morseTree = 
+[
+    '5',
+        'h',
+    '4',
+            's',
+    ' ',
+        'v',
+    '3',
+                'i',
+    ' ',
+        'f',
+    ' ',
+            'u',
+    ' ',
+        ' ',
+    '2',
+                        'e',
+    ' ',
+        'l',
+    ' ',
+            'r',
+    '+',
+        ' ',
+    ' ',
+                'a',
+    ' ',
+        'p',
+    ' ',
+            'w',
+    ' ',
+        'j',
+    '1',
+                            ' ',
+    '6',
+        'b',
+    '=',
+            'd',
+    '/',
+        'x',
+    ' ',
+                'n',
+    ' ',
+        'c',
+    ' ',
+            'k',
+    ' ',
+        'y',
+    ' ',
+                        't',
+    '7',
+        'z',
+    ' ',
+            'g',
+    ' ',
+        'q',
+    ' ',
+                'm',
+    '8',
+        ' ',
+    ' ',
+            'o',
+    '9',
+        ' ',
+    '0',
+]
+
+function binarySearch(str, tree)
+{
+    if(str.length() == 0)
+    {
+        return tree[Math.floor(tree.length/2) + 1]
+    }
+    else if(str[0] == '.')
+    {
+        binarySearch(str.substring(1), tree.slice(0,half))
+    }
+    else if(str[0] == '-')
+    {
+        binarySearch(str.substring(1), tree.slice(half))
+    }
+}
+
 function morseToText(input)
 {
     switch (input)
